@@ -1,0 +1,18 @@
+﻿
+<div class="row">
+    <div class="col-12 mb-3">
+        <h2><a href="#"><i class="bi bi-arrow-left"></i></a> Edit Category</h2>
+    </div>
+</div>
+
+<div class="row">
+    <form action="EditToDb">
+        <input name="Id" type="hidden" value="@Model.Id" >
+
+        <div class="mb-3">
+            <label for="exampleCategoryName" class="form-label">Category Name</label>
+            <input name="Name" type="text" class="form-control" value="@Model.Name" id="exampleCategoryName">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

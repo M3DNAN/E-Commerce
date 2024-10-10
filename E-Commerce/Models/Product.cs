@@ -1,4 +1,9 @@
-﻿namespace E_Commerce.Models
+﻿using static System.Formats.Asn1.AsnWriter;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Threading;
+using System;
+
+namespace E_Commerce.Models
 {
     public class Product
     {

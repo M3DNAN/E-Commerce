@@ -1,0 +1,43 @@
+﻿@model Product
+
+<div class="row">
+    <div class="col-12 mb-3">
+        <h2><a href="#"><i class="bi bi-arrow-left"></i></a> Edit  @Model.Name </h2>
+    </div>
+</div>
+
+<div class="row">
+    <form action="AddToDb" method="post" enctype="multipart/form-data">
+        <input name="Id" type="hidden" value="@Model.Id">
+        <div class="mb-3">
+            <label for="exampleProductName" class="form-label">Product Name</label>
+            <input name="Name" type="text" class="form-control" id="exampleProductName" value="@Model.Name">
+        </div>
+        <div class="mb-3">
+            <label for="exampleProductDescription" class="form-label">Product Description</label>
+            <input name="Description" type="text" class="form-control" id="exampleProductDescription" value="@Model.Description">
+        </div>
+        <div class="mb-3">
+            <label for="exampleProductPrice" class="form-label">Product Price</label>
+            <input name="Price" type="number" class="form-control" id="exampleProductPrice" value="@Model.Price">
+        </div>
+        <div class="mb-3">
+            <label for="exampleProductPhotoUrl" class="form-label">Product Photo</label>
+            <input name="PhotoUrl" type="file" class="form-control" id="exampleProductPhotoUrl" value="@Model.PhotoUrl">
+        </div>
+        <div>
+            <label for="exampleSelect1" class="form-label mt-4">Category select</label>
+            <select name="CategoryId" class="form-select" id="exampleSelect1" value="@Model.CategoryId">
+                >
+
+                @foreach (var item in ViewData["categories"] as List<Category>)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
+
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

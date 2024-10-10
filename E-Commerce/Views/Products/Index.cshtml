@@ -1,10 +1,10 @@
-﻿
+﻿@model IEnumerable<Product>
 <div class="row">
     <div class="col-9 mb-3">
-        <h2>All Categories</h2>
+        <h2>All Products</h2>
     </div>
     <div class="col-3">
-        <a href="/Category/Create" type="button" class="btn btn-danger"><i class="bi bi-plus-circle"></i> Create New Category</a>
+        <a href="/Products/Create" type="button" class="btn btn-danger"><i class="bi bi-plus-circle"></i> Create New Product</a>
     </div>
 </div>
 
@@ -13,7 +13,11 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Category Name</th>
+                <th scope="col"> Name</th>
+                <th scope="col"> Description</th>
+                <th scope="col"> Price</th>
+                <th scope="col"> Rating</th>
+                <th scope="col"> CategoryId</th>
                 <th colspan="2" scope="col">Actions</th>
 
             </tr>
@@ -24,7 +28,12 @@
                 <tr class="table-light">
                     <th scope="row">@item.Id</th>
                     <td>@item.Name</td>
-                    <td><a href="/Category/edit?CategoryId=@item.Id" type="button" class="btn btn-info"> <i class="bi bi-pencil-square"></i> Edit</a></td>
+                    <td>@item.Description</td>
+                    <td>@item.Price</td>
+                    <td>@item.Rating</td>
+                    <td>@item.Category.Name</td>
+                   
+                    <td><a href="/Products/edit?ProductId=@item.Id" type="button" class="btn btn-info"> <i class="bi bi-pencil-square"></i> Edit</a></td>
                     <td>
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="@item.Id">
                             <i class="bi bi-trash3"></i> Delete
@@ -32,7 +41,7 @@
                 </tr>
             }
         </tbody>
-    </table>    
+    </table>
 </div>
 <!-- Modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -47,7 +56,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <form id="deleteForm" method="post" action="/Category/Delete">
+                <form id="deleteForm" method="post" action="/Products/Delete">
                     <input type="hidden" name="Id" id="categoryIdInput" value="" />
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>

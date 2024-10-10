@@ -24,5 +24,23 @@ namespace E_Commerce.Controllers
             return  RedirectToAction("Index");
 
         }
+        public IActionResult Edit(int CategoryId)
+        {
+            var category = Context.Categorys.Find(CategoryId);
+            return View(category);
+        }
+        public IActionResult EditToDb(Category category)
+        {
+            Context.Categorys.Update(category);
+            Context.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
+        public IActionResult Delete(Category category)
+        {
+            Context.Categorys.Remove(category);
+            Context.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
